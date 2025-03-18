@@ -79,6 +79,13 @@ export interface SelectListProps  {
     searchPlaceholder?: string,
 
     /**
+     * Pass a custom function to handle searching. This replaces the TextInput `onChangeText`.
+     * 
+     * By default, searching will filter your `data` elements by value
+     */
+    onSearch?: (text: string) => void,
+
+    /**
     * Trigger an action when option is selected
     */
     onSelect?: () => void,
@@ -195,6 +202,13 @@ export interface MultipleSelectListProps  {
     * set to false if you dont want to use search functionality
     */
      searchPlaceholder?: string,
+
+     /**
+     * Pass a custom function to handle searching. This replaces the TextInput `onChangeText`.
+     * 
+     * By default, searching will filter your `data` elements by value
+     */
+    onSearch?: (text: string) => void,
 
     /**
     * Trigger an action when option is selected
