@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import {
     View,
     Text,
@@ -39,7 +39,8 @@ const SelectList: React.FC<SelectListProps> =  ({
         onSelect = () => {},
         save = 'key',
         dropdownShown = false,
-        fontFamily
+        fontFamily,
+        openSearchOnNotFound = false
     }) => {
 
     const oldOption = React.useRef(null)
@@ -49,6 +50,7 @@ const SelectList: React.FC<SelectListProps> =  ({
     const [height,setHeight] = React.useState<number>(200)
     const animatedvalue = React.useRef(new Animated.Value(0)).current;
     const [filtereddata,setFilteredData] = React.useState(data)
+    const searchInputRef = useRef<TextInput>(null);
 
 
     const slidedown = () => {
@@ -150,6 +152,7 @@ const SelectList: React.FC<SelectListProps> =  ({
                                     setFilteredData(result)
                                 }}
                                 style={[{padding:0,height:20,flex:1,fontFamily},inputStyles]}
+                                ref={searchInputRef}
                             />
                                 <TouchableOpacity onPress={() => slideup()} >
 
@@ -230,10 +233,14 @@ const SelectList: React.FC<SelectListProps> =  ({
                                 })
                                 :
                                 <TouchableOpacity style={[styles.option,dropdownItemStyles]} onPress={ () => {
-                                    setSelected(undefined)
-                                    setSelectedVal("")
-                                    slideup()
-                                    setTimeout(() => setFilteredData(data), 800)
+                                    if (openSeacrhOnNotFound) {
+                                            searchInputRef.current?.focus();
+                                        } else {
+                                            setSelected(undefined)
+                                            setSelectedVal("")
+                                            slideup()
+                                            setTimeout(() => setFilteredData(data), 800)
+                                        }
                                     
                                 }}>
                                     <Text style={[{fontFamily},dropdownTextStyles]}>{notFoundText}</Text>
