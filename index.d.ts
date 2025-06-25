@@ -125,7 +125,7 @@ export interface SelectListProps  {
     */
     closeicon?: JSX.Element,
 
-    openSeacrhOnNotFound?: boolean
+    openSearchOnNotFound?: boolean
 }
 
 
