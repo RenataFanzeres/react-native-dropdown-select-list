@@ -124,6 +124,8 @@ export interface SelectListProps  {
     *  Pass any JSX to this prop like Text, Image or Icon to show instead of close icon
     */
     closeicon?: JSX.Element,
+
+    openSeacrhOnNotFound?: boolean
 }
 
 
