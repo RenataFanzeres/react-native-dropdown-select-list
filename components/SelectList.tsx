@@ -233,7 +233,7 @@ const SelectList: React.FC<SelectListProps> =  ({
                                 })
                                 :
                                 <TouchableOpacity style={[styles.option,dropdownItemStyles]} onPress={ () => {
-                                    if (openSeacrhOnNotFound) {
+                                    if (openSearchOnNotFound) {
                                             searchInputRef.current?.focus();
                                         } else {
                                             setSelected(undefined)
